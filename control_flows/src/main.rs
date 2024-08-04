@@ -1,85 +1,66 @@
 fn main() {
-    let number = 8;
-    if number < 5 {
-        println!("Condition passed!");
-    } else if number > 5{
-        println!("Condition passed with {} greater than 5!", number);
-    } else {
-        println!("Condition failed!")
-    }
-
-    let condition = false;
-    let value = if condition {6} else {0};
-    println!("The value is {}", value);
-    let x = fibonacci(6);
-    println!("The value is {}", x);
+    // test_if();
+    // test_while();
+    // test_loop();
+    test_for();
 }
 
-fn loop_function() {
+#[allow(dead_code)]
+fn test_if() {
+    let max_age = 16u8;
+    println!("Enter your age: ");
+    let my_input = &mut String::from("");
+    std::io::stdin().read_line(my_input).unwrap();
+    let age = my_input.replace("\n", "").parse::<u8>().unwrap();
+    
+    if age > max_age {
+        println!("You are old enough to drive!");
+    } else if age == max_age {
+        println!("Congratulations Right on time!");
+    } else {
+        println!("You are not old enough to drive!");
+    }
+}
+
+#[allow(dead_code)]
+fn test_while() {
+    let age_to_drive = 16u8;
+
+    let mut current_age = 0u8;
+    while current_age < age_to_drive {
+        println!("Waiting ...");
+        current_age += 1;
+
+        if current_age == 10 {
+            println!("You are waiting for too long!");
+            break;
+        }
+    }
+}
+
+#[allow(dead_code)]
+fn test_loop() {
+    let mut x = 1;
+
     loop {
-        println!("Loop"); // Infinite loop
-    }
-}
-
-fn loop_with_break() {
-    let mut counter = 0;
-    let result = loop {
-        counter += 1;
-        if counter == 10 {
-            break counter * 2;
+        println!("x = {}", x);
+        if x > 5 {
+            break;
         }
-    };
-    println!("{}", result);
+        x += 1;
+    }
 }
 
-fn nested_loops() {
-    let mut count = 0;
-    'main: loop {
-        println!("count = {count}");
-        let mut remaining = 10;
+fn test_for() {
+    let ages = [18, 24, 13, 30, 17, 15, 60];
+    let age_to_drive = 16u8;
 
-        loop {
-            println!("remaining = {remaining}");
-            if remaining == 9 {
-                break;
-            }
-            if count == 2 {
-                break 'main;
-            }
-            remaining -= 1;
+    for age in ages {
+        println!("Age -> {}:", age);
+        if age > age_to_drive {
+            println!("Age {} is eligible to drive", age);
+        } else {
+            println!("Age {} is not eligible to drive", age);
         }
-        count += 1;
-    }
-    println!("End count = {count}");
-}
-
-fn while_loop() {
-    // let mut count = 3;
-    // while count != 0 {
-    //     println!("{count}");
-    //     count -= 1;
-    // }
-    // println!("LIFTOFF!!!");
-    let a = [10,20,30,40,50];
-    // let mut index: usize = 0;
-
-    // while index < 5 {
-    //     println!("The value is: {}", a[index]);
-    //     index += 1;
-    // }
-    // for element in a {
-    //     println!("The value is: {}", element);
-    // }
-    for i in (0..4).rev() {
-        println!("{}", i);
-    }
-    println!("LIFTOFF!!!");
-}
-
-fn fibonacci(x: i32) -> i32 {
-    if x <= 1 {
-        x
-    } else {
-        fibonacci(x-1) + fibonacci(x-2)
     }
 }

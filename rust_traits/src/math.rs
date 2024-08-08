@@ -146,4 +146,10 @@ mod tests {
         let cube = super::solids::Solid::Cube { side: 10 };
         assert_eq!(cube.volume(), 1000);
     }
+
+    #[test]
+    fn test_cubiod() {
+        let cuboid = super::solids::Solid::Cuboid { side: 10 };
+        assert_eq!(cuboid.volume(), 1000);
+    }
 }

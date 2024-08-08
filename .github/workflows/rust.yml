@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      run: echo "Building..." && cd rust_tests && cargo build --verbose
+      run: echo "Building..." && cd rodo_cli && cargo build --verbose
     - name: Tests
-      run:  cd rust_tests && cargo test --verbose
+      run:  cd rodo_cli && cargo test --verbose

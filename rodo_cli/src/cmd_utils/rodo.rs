@@ -1,4 +1,5 @@
 use clap::{Arg, ArgMatches, Command, Parser};
+use clap::error::ErrorKind;
 
 
 #[derive(Parser, Debug)]
@@ -44,3 +45,9 @@ pub fn playing_with_commands(matches: ArgMatches) {
     }
 }
 
+#[allow(dead_code)]
+pub fn raise_err() -> clap::Error {
+    let mut cmd = build_cmd();
+    let err = cmd.error(ErrorKind::InvalidValue, "invalid value");
+    err
+}

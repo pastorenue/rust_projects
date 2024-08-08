@@ -50,3 +50,9 @@ fn test_mutated_arg() {
     let matches = cmd.try_get_matches_from(["new program", "-f", "text.txt"]);
     assert!(matches.is_ok());
 }
+
+#[test]
+fn test_cmd() {
+    let cmd = build_cmd();
+    cmd.debug_assert();
+}
